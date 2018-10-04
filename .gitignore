@@ -1,2 +1,3 @@
-csv_utf_8/*.*
-raw_data/*.*
+*.csv
+*.xls
+*.xlsx
