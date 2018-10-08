@@ -15,6 +15,7 @@ def find_encoding(fname):
 currentDirectory = pathlib.Path('.')
 currentPattern = "raw_data/*.csv"
 for currentFile in currentDirectory.glob(currentPattern):  
+
     temp =[]
     str_currentFile = str(currentFile)
     print("converting.. "+str_currentFile,end=" ")
@@ -23,7 +24,13 @@ for currentFile in currentDirectory.glob(currentPattern):
     with open(str_currentFile,encoding=my_encoding, errors='ignore') as myFile:  
         reader = csv.reader(myFile)
         for row in reader:
-            temp.append(row)
+            check_row_value =0
+            for col in row:
+                if(col):
+                    check_row_value=check_row_value+1
+            # row = tuple("=\"" + r + "\"" for r in row) # เพิ่มมาแก้ leading 0
+            if check_row_value>1:
+                temp.append(row)
 				
 				
 
